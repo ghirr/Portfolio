@@ -8,6 +8,12 @@ import { Component, ElementRef, Renderer2 } from '@angular/core';
 export class NavbarComponent {
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
+  scrollToSection(section: string) {
+    const element = document.querySelector(section);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
   ngAfterViewInit() {
     const navLinks = this.el.nativeElement.querySelectorAll('.custom-navbar .nav .link');
     const navToggle = this.el.nativeElement.querySelector('#nav-toggle');

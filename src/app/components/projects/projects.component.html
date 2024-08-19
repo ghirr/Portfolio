@@ -5,309 +5,57 @@
         <h4 class="section-title mb-6">Portfolio</h4>
         <!-- row -->
         <div class="row">
-          <div class="col-md-6">
-              <div class="card">
-                      
+            <div *ngFor="let project of projects" class="col-md-6">
+                <div class="card">
                   <div class="project-title">
-                      <h3>Zum-Portal</h3>
+                    <h3>{{ project.name }}</h3>
                   </div>
-                  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                      <ol class="carousel-indicators">
-                          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                          <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-                          <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
-                          <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
-                      </ol>
-                      <div class="carousel-inner carousel-img">
-                          <div class="carousel-item active">
-                              <img class="d-block w-100" src="assets/imgs/projects/zum/Dashboard_ADMIN.png" alt="First slide">
-                          </div>
-                          <div class="carousel-item">
-                              <img class="d-block w-100" src="assets/imgs/projects/zum/TaskBoard.png" alt="Second slide">
-                          </div>
-                          <div class="carousel-item">
-                              <img class="d-block w-100" src="assets/imgs/projects/zum/Presence_Tracker.png" alt="Third slide">
-                          </div>
-                          <div class="carousel-item">
-                              <img class="d-block w-100" src="assets/imgs/projects/zum/Leave_List.png" alt="Third slide">
-                          </div>
-                          <div class="carousel-item">
-                              <img class="d-block w-100" src="assets/imgs/projects/zum/Events_Calendar.png" alt="Third slide">
-                          </div>
-                          <div class="carousel-item">
-                              <img class="d-block w-100" src="assets/imgs/projects/zum/CustomersList.png" alt="Third slide">
-                          </div>
-                          <div class="carousel-item">
-                              <img class="d-block w-100" src="assets/imgs/projects/zum/Alocation-List.png" alt="Third slide">
-                          </div>
+                  <div id="carouselExampleIndicators{{ project.id }}" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                      <li *ngFor="let image of project.images; let i = index" [attr.data-slide-to]="i"
+                          [class.active]="i === 0" [attr.data-target]="'#carouselExampleIndicators' + project.id"></li>
+                    </ol>
+                    <div class="carousel-inner carousel-img">
+                      <div *ngFor="let image of project.images; let i = index" class="carousel-item" [class.active]="i === 0">
+                        <img class="d-block w-100" [src]="image.imageUrl" alt="Slide {{ i + 1 }}">
                       </div>
-                      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Previous</span>
-                      </a>
-                      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
-                      </a>
+                    </div>
+                    <a class="carousel-control-prev" [href]="'#carouselExampleIndicators' + project.id" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" [href]="'#carouselExampleIndicators' + project.id" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
                   </div>
                   <div class="carousel-body">
-                      <div class="row technologies">
-                          <span class="col-4 col-lg-2 tech"><img src="assets/imgs/technologies/angular.svg"> Angular</span>
-                          <span class="col-4 col-lg-2 tech"><img src="assets/imgs/technologies/django.svg"> Django</span>
-                          <span class="col-4 col-lg-2 tech"><img src="assets/imgs/technologies/postgresql.svg"> PostgreSQL</span>
-                          <span class="col-4 col-lg-2 tech"><img src="assets/imgs/technologies/bootstrap.svg"> Bootstrap</span>
+                    <div class="row technologies">
+                      <span *ngFor="let tech of project.project_technologies" class="col-4 col-lg-2 tech">
+                        <img [src]="tech.technologie.image"> {{ tech.technologie.name }}
+                      </span>
+                    </div>
+                    <div class="project-description">
+                      <h6>{{ project.description_title }}</h6>
+                      <div class="desc-content">
+                        <ul>
+                          <li *ngFor="let task of project.project_tasks">{{ task.task }}</li>
+                        </ul>
                       </div>
-                      <div class="project-description">
-                          <h6>
-                              Development of a web management application of human resources
-                          </h6>
-                          <div class="desc-content">
-                              <ul>
-                                  <li>Tracking and managing clients as well as associated projects</li>
-                                  <li>Using a dashboard to organize tasks</li>
-                                  <li>Organizing internal events in an interactive calendar</li>
-                                  <li>Each user has a personalized process for leave requests and approvals</li>
-                                  <li>Meeting room and workspace reservation system</li>
-                              </ul>
-                          </div>
-                      </div>
+                    </div>
                   </div>
                   <div class="carousel-footer">
-                      <div class="btn-container">
-                          <a class="btn btn-outline-primary" href="#">
-                              <img class="icon" src="assets/imgs/github.svg">ViewSource
-                          </a>
-                          <a class="btn btn-outline-primary" href="#">
-                              <img class="icon" src="assets/imgs/book.svg">Report
-                          </a>
-                      </div>
+                    <div class="btn-container">
+                      <a class="btn btn-outline-primary" [href]="project.source" target="_blank">
+                        <img class="icon" src="assets/imgs/github.svg">View Source
+                      </a>
+                      <a *ngIf="project.report" class="btn btn-outline-primary" [href]="project.report" target="_blank">
+                        <img class="icon" src="assets/imgs/book.svg">Report
+                      </a>
+                    </div>
                   </div>
+                </div>
               </div>
-          </div>
-          <div class="col-md-6">
-              <div class="card">
-                      
-                  <div class="project-title">
-                      <h3>2ndLife</h3>
-                  </div>
-                  <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
-                      <ol class="carousel-indicators">
-                          <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
-                          <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
-                          <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
-                          <li data-target="#carouselExampleIndicators1" data-slide-to="3"></li>
-                          <li data-target="#carouselExampleIndicators1" data-slide-to="4"></li>
-                          <li data-target="#carouselExampleIndicators1" data-slide-to="5"></li>
-                      </ol>
-                      <div class="carousel-inner carousel-img">
-                          <div class="carousel-item active">
-                              <img class="d-block w-100" src="assets/imgs/projects/2ndlife/items.png" alt="First slide">
-                          </div>
-                          <div class="carousel-item">
-                              <img class="d-block w-100" src="assets/imgs/projects/2ndlife/chariot.png" alt="Second slide">
-                          </div>
-                          <div class="carousel-item">
-                              <img class="d-block w-100" src="assets/imgs/projects/2ndlife/paypal.png" alt="Third slide">
-                          </div>
-                          <div class="carousel-item">
-                              <img class="d-block w-100" src="assets/imgs/projects/2ndlife/livraison.png" alt="Third slide">
-                          </div>
-                          <div class="carousel-item">
-                              <img class="d-block w-100" src="assets/imgs/projects/2ndlife/login.png" alt="Third slide">
-                          </div>
-                          <div class="carousel-item">
-                              <img class="d-block w-100" src="assets/imgs/projects/2ndlife/profile.png" alt="Third slide">
-                          </div>
-                      </div>
-                      <a class="carousel-control-prev" href="#carouselExampleIndicators1" role="button" data-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Previous</span>
-                      </a>
-                      <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button" data-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
-                      </a>
-                  </div>
-                  <div class="carousel-body">
-                      <div class="row technologies">
-                          <span class="col-4 col-lg-2 tech"><img src="assets/imgs/technologies/angular.svg"> Angular</span>
-                          <span class="col-4 col-lg-2 tech"><img src="assets/imgs/technologies/nodejs.svg"> NodeJs</span>
-                          <span class="col-4 col-lg-2 tech"><img src="assets/imgs/technologies/expressjs.svg"> ExpressJs</span>
-                          <span class="col-4 col-lg-2 tech"><img src="assets/imgs/technologies/mongodb.svg"> MongoDb</span>
-                          <span class="col-4 col-lg-2 tech"><img src="assets/imgs/technologies/bootstrap.svg"> Bootstrap</span>
-                      </div>
-                      <div class="project-description">
-                          <h6>
-                              MEAN Web Application for Recovery and Sharing of Unused Items
-                          </h6>
-                          <div class="desc-content">
-                              <ul>
-                                  <li>Sharing and selling items online</li>
-                                  <li>Purchasing items shared by other users</li>
-                                  <li>Integration of PayPal for secure transactions</li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="carousel-footer">
-                      <div class="btn-container">
-                          <a class="btn btn-outline-primary" href="#">
-                              <img class="icon" src="assets/imgs/github.svg">ViewSource
-                          </a>
-                          <a class="btn btn-outline-primary" href="#">
-                              <img class="icon" src="assets/imgs/book.svg">Report
-                          </a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-6">
-              <div class="card">
-                      
-                  <div class="project-title">
-                      <h3>Dingo</h3>
-                  </div>
-                  <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-                      <ol class="carousel-indicators">
-                          <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
-                          <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
-                          <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
-                          <li data-target="#carouselExampleIndicators2" data-slide-to="3"></li>
-                      </ol>
-                      <div class="carousel-inner carousel-img">
-                          <div class="carousel-item active">
-                              <img class="d-block w-100" src="assets/imgs/projects/dingo/a.png" alt="First slide">
-                          </div>
-                          <div class="carousel-item">
-                              <img class="d-block w-100" src="assets/imgs/projects/dingo/b.png" alt="Second slide">
-                          </div>
-                          <div class="carousel-item">
-                              <img class="d-block w-100" src="assets/imgs/projects/dingo/n.png" alt="Third slide">
-                          </div>
-                          <div class="carousel-item">
-                              <img class="d-block w-100" src="assets/imgs/projects/dingo/v.png" alt="Third slide">
-                          </div>
-                      </div>
-                      <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Previous</span>
-                      </a>
-                      <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
-                      </a>
-                  </div>
-                  <div class="carousel-body">
-                      <div class="row technologies">
-                          <span class="col-4 col-lg-2 tech"><img src="assets/imgs/technologies/angular.svg"> Angular</span>
-                          <span class="col-4 col-lg-2 tech"><img src="assets/imgs/technologies/nodejs.svg"> NodeJs</span>
-                          <span class="col-4 col-lg-2 tech"><img src="assets/imgs/technologies/expressjs.svg"> ExpressJs</span>
-                          <span class="col-4 col-lg-2 tech"><img src="assets/imgs/technologies/mongodb.svg"> MongoDb</span>
-                          <span class="col-4 col-lg-2 tech"><img src="assets/imgs/technologies/bootstrap.svg"> Bootstrap</span>
-                      </div>
-                      <div class="project-description">
-                          <h6>
-                              Design and Development of a Restaurant Application
-                          </h6>
-                          <div class="desc-content">
-                              <ul>
-                                  <li>Management of dishes and chefs</li>
-                                  <li>Online reservation system for customers, allowing them to choose a table and specify food preferences</li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="carousel-footer">
-                      <div class="btn-container">
-                          <a class="btn btn-outline-primary" href="#">
-                              <img class="icon" src="assets/imgs/github.svg">ViewSource
-                          </a>
-                          <a class="btn btn-outline-primary" href="#">
-                              <img class="icon" src="assets/imgs/book.svg">Report
-                          </a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-6">
-              <div class="card">
-                      
-                  <div class="project-title">
-                      <h3>Erasmus</h3>
-                  </div>
-                  <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
-                      <ol class="carousel-indicators">
-                          <li data-target="#carouselExampleIndicators3" data-slide-to="0" class="active"></li>
-                          <li data-target="#carouselExampleIndicators3" data-slide-to="1"></li>
-                          <li data-target="#carouselExampleIndicators3" data-slide-to="2"></li>
-                          <li data-target="#carouselExampleIndicators3" data-slide-to="3"></li>
-                          <li data-target="#carouselExampleIndicators3" data-slide-to="4"></li>
-                          <li data-target="#carouselExampleIndicators3" data-slide-to="5"></li>
-                      </ol>
-                      <div class="carousel-inner carousel-img">
-                          <div class="carousel-item active">
-                              <img class="d-block w-100" src="assets/imgs/projects/erasmus/home.png" alt="First slide">
-                          </div>
-                          <div class="carousel-item">
-                              <img class="d-block w-100" src="assets/imgs/projects/erasmus/missions.png" alt="Second slide">
-                          </div>
-                          <div class="carousel-item">
-                              <img class="d-block w-100" src="assets/imgs/projects/erasmus/projects.png" alt="Third slide">
-                          </div>
-                          <div class="carousel-item">
-                              <img class="d-block w-100" src="assets/imgs/projects/erasmus/annoucements.png" alt="Third slide">
-                          </div>
-                          <div class="carousel-item">
-                              <img class="d-block w-100" src="assets/imgs/projects/erasmus/places.png" alt="Third slide">
-                          </div>
-                          <div class="carousel-item">
-                              <img class="d-block w-100" src="assets/imgs/projects/erasmus/contact.png" alt="Third slide">
-                          </div>
-                      </div>
-                      <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Previous</span>
-                      </a>
-                      <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
-                      </a>
-                  </div>
-                  <div class="carousel-body">
-                      <div class="row technologies">
-                          <span class="col-4 col-lg-2 tech"><img src="assets/imgs/technologies/angular.svg"> Angular</span>
-                          <span class="col-4 col-lg-2 tech"><img src="assets/imgs/technologies/nodejs.svg"> NodeJs</span>
-                          <span class="col-4 col-lg-2 tech"><img src="assets/imgs/technologies/expressjs.svg"> ExpressJs</span>
-                          <span class="col-4 col-lg-2 tech"><img src="assets/imgs/technologies/mongodb.svg"> MongoDb</span>
-                          <span class="col-4 col-lg-2 tech"><img src="assets/imgs/technologies/bootstrap.svg"> Bootstrap</span>
-                      </div>
-                      <div class="project-description">
-                          <h6>
-                              MEAN Dynamic web application Erasmus Iset Rades
-                          </h6>
-                          <div class="desc-content">
-                              <ul>
-                                  <li>A space to find all the details about Erasmus Iset Rades</li>
-                                  <li>Management of future and past events</li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="carousel-footer">
-                      <div class="btn-container">
-                          <a class="btn btn-outline-primary" href="#">
-                              <img class="icon" src="assets/imgs/github.svg">ViewSource
-                          </a>
-                          <a class="btn btn-outline-primary" href="#">
-                              <img class="icon" src="assets/imgs/book.svg">Report
-                          </a>
-                      </div>
-                  </div>
-              </div>
-          </div>
         </div><!-- end of row -->
     </div><!-- end of container -->
   </section> <!-- end of portfolio section -->

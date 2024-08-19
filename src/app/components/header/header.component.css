@@ -1,4 +1,30 @@
-.icon{
-    height: 30px;
-    width: 60px;
+.icon {
+    height: 40px; /* Set a specific height */
+    width: 30px;  /* Set a specific width */
+    margin-right: 8px; /* Add some space between the icon and text */
+}
+
+.headar-buttons a {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    justify-content: center; /* Center the content horizontally */
+    margin-right: 10px;
+    padding: 10px 20px; /* Add padding inside the button */
+    border: 1px solid #343a40; /* Border style to match the button outline */
+    border-radius: 25px; /* Add rounded corners */
+    color: inherit; /* Ensure text color inherits from the button */
+    text-decoration: none; /* Remove underline from the link */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+}
+.headar-buttons a:hover{
+    color: white;
+}
+/* Hover effect for GitHub button */
+.headar-buttons a:nth-child(1):hover {
+    background-color: #24292e; /* GitHub logo color */
+}
+
+/* Hover effect for LinkedIn button */
+.headar-buttons a:nth-child(2):hover {
+    background-color: #0077b5; /* LinkedIn logo color */
 }
