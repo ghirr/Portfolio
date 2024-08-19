@@ -7,6 +7,16 @@ import { HeaderComponent } from './components/header/header.component';
 import { AboutComponent } from './components/about/about.component';
 import { ServiceComponent } from './components/service/service.component';
 import { ProjectsComponent } from './components/projects/projects.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
+import { SupabaseService } from './services/superbase.service';
+import { HiremeComponent } from './components/hireme/hireme.component';
+import { TestmonialComponent } from './components/testmonial/testmonial.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +25,24 @@ import { ProjectsComponent } from './components/projects/projects.component';
     HeaderComponent,
     AboutComponent,
     ServiceComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    ContactComponent,
+    HiremeComponent,
+    TestmonialComponent,
+    FooterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [SupabaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
