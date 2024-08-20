@@ -21,6 +21,7 @@
     "@emailjs/browser": "^4.4.1",
     "@supabase/auth-js": "^2.64.4",
     "@supabase/supabase-js": "^2.45.1",
+    "gsap": "^3.12.5",
     "ngx-toastr": "^16.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

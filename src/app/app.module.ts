@@ -17,6 +17,7 @@ import { SupabaseService } from './services/superbase.service';
 import { HiremeComponent } from './components/hireme/hireme.component';
 import { TestmonialComponent } from './components/testmonial/testmonial.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { TechnologiesComponent } from './components/technologies/technologies.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FooterComponent } from './components/footer/footer.component';
     ContactComponent,
     HiremeComponent,
     TestmonialComponent,
-    FooterComponent
+    FooterComponent,
+    TechnologiesComponent
   ],
   imports: [
     BrowserModule,

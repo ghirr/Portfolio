@@ -15,7 +15,6 @@ export class SupabaseService {
     );
   }
 
-  // Fetch all projects with their tasks, images, and technologies
   async getProjectsWithDetails() {
     const { data, error } = await this.supabase
       .from('project')
@@ -30,10 +29,25 @@ export class SupabaseService {
     return data;
   }
 
-  // Fetch all technologies
   async getAllTechnologies() {
     const { data, error } = await this.supabase.from('technologie').select('*');
     if (error) throw error;
     return data;
   }
+
+  async getJsonFile(): Promise<any> {
+    const timestamp = new Date().getTime(); // Generate a unique timestamp
+    const { data, error } = await this.supabase.storage
+      .from('public/docs')
+      .download(`about.json?t=${timestamp}`); // Append the timestamp as a query parameter
+  
+    if (error) {
+      console.error('Error downloading JSON file:', error);
+      return null;
+    }
+  
+    const text = await data.text();
+    return JSON.parse(text);
+  }
+  
 }

@@ -17,7 +17,6 @@ export class ProjectsComponent implements OnInit {
   async fetchProjects() {
     try {
       this.projects = await this.supabaseService.getProjectsWithDetails();
-      console.log(this.projects);
     } catch (error) {
       console.error('Error fetching projects:', error);
     }
@@ -25,7 +24,6 @@ export class ProjectsComponent implements OnInit {
   async fetchTechnologies() {
     try {
       this.projects = await this.supabaseService.getAllTechnologies();
-      console.log(this.projects);
       
     } catch (error) {
       console.error('Error fetching technologies:', error);

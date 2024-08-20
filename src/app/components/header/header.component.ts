@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
 import Typewriter from 'typewriter-effect/dist/core';
 
 
@@ -8,6 +8,8 @@ import Typewriter from 'typewriter-effect/dist/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements AfterViewInit {
+
+  @Input() title: string = '';
 
   ngAfterViewInit() {
     const greetingElement = document.getElementById('greeting');
@@ -35,7 +37,7 @@ export class HeaderComponent implements AfterViewInit {
           });
 
           typewriter2
-            .typeString('A Software Developer')
+            .typeString(this.title)
             .start();
         })
         .start();

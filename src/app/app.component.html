@@ -1,10 +1,13 @@
 <app-navbar></app-navbar>
 
-<app-header></app-header>
+<app-header [title]="aboutData?.title"></app-header>
 <!-- about section -->
-<app-about></app-about>
+<app-about [description]="aboutData?.description"
+[peep]="aboutData?.peep"
+[resume]="aboutData?.resume"></app-about>
 <!-- end of about section -->
 
+<app-technologies></app-technologies>
 <!-- service section -->
 <app-service></app-service>
 <!-- end of service section -->
