@@ -1,99 +1,361 @@
-.icon{
-    height: 20px;
-    width: 30px;
+/* Modern Project Card Container */
+.project-wrapper {
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.project-wrapper:hover {
+    transform: translateY(-8px);
+}
+
+/* Modern Card Styling */
+.modern-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+    background: linear-gradient(135deg, #ffffff 30%, #98A1BC 100%);
+    border-radius: 20px;
+    height: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.modern-card:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+/* Project Header */
+.project-header {
+    padding: 1.5rem 1.5rem 1rem;
+    background: linear-gradient(135deg, rgba(180, 214, 205, 0.1) 0%, rgba(7, 83, 155, 0.05) 100%);
+    border-bottom: 1px solid rgba(180, 214, 205, 0.3);
+}
+
+.project-title {
+    margin: 0;
+}
+
+.project-title h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background-image: linear-gradient(135deg, #B4D6CD 0%, #07539b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+}
+
+/* Carousel Styling */
+.project-carousel {
+    position: relative;
+    margin: 0;
+}
+
+.carousel-img {
+    height: 280px;
+    border-radius: 0;
+    margin-top: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-img .carousel-item {
+    position: relative;
+}
+
+.project-image {
+    height: 280px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    width: 100%;
+}
+
+.carousel-item:hover .project-image {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+    pointer-events: none;
+}
+
+/* Carousel Controls */
+
+/* Carousel Indicators */
+.carousel-indicators {
+    margin-bottom: 10px;
+}
+
+.carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+.carousel-indicators li.active {
+    background-color: #B4D6CD;
+    border-color: #B4D6CD;
+    transform: scale(1.2);
+}
+
+/* Carousel Body */
+.carousel-body {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Technologies Section */
+.technologies-section {
+    margin-bottom: 1.25rem;
+}
+
+.technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.tech-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.85rem;
+    background: linear-gradient(135deg, #B4D6CD 0%, #9bc5b8 100%);
+    border-radius: 25px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(180, 214, 205, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.tech-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(180, 214, 205, 0.5);
+    background: linear-gradient(135deg, #a8d4c7 0%, #85b5a8 100%);
+}
+
+.tech-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.tech-name {
+    white-space: nowrap;
+}
+
+/* Project Description */
+.project-description {
+    flex-grow: 1;
+}
+
+.description-title {
+    margin: 0 0 0.75rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    text-align: left;
+}
+
+.desc-content {
+    text-align: left;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.5rem 0;
+    font-size: 0.875rem;
+    color: #495057;
+    line-height: 1.6;
+    transition: all 0.2s ease;
+}
+
+.task-item:hover {
+    color: #07539b;
+    padding-left: 5px;
+}
+
+.task-bullet {
+    width: 6px;
+    height: 6px;
+    background: linear-gradient(135deg, #B4D6CD 0%, #07539b 100%);
+    border-radius: 50%;
+    margin-top: 0.5rem;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(180, 214, 205, 0.2);
+}
+
+.task-item:hover .task-bullet {
+    box-shadow: 0 0 0 5px rgba(180, 214, 205, 0.4);
+    transform: scale(1.2);
+}
+
+/* Footer */
+.carousel-footer {
+    margin-top: auto;
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid rgba(180, 214, 205, 0.3);
+    background: linear-gradient(180deg, transparent 0%, rgba(180, 214, 205, 0.05) 100%);
 }
 
 .btn-container {
     display: flex;
+    gap: 0.75rem;
     width: 100%;
 }
-.btn-container a{
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-}
 
-.btn-container .btn {
+/* Modern Buttons */
+.btn-modern {
     flex: 1;
-    text-align: center;
-}
-
-.btn-container .btn img.icon {
-    margin-left: 5px; /* Adjust icon margin if needed */
-}
-
-.carousel-control-next,
-.carousel-control-prev /*, .carousel-indicators */ {
-    filter: invert(100%);
-}
-
-.col-md-6 {
-    margin-bottom: 20px; /* Add spacing below each column */
-}
-.card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #E7E8D8;
-    border-radius: 5%;
-    height: 100%; /* Make sure card takes the full height of its container */
-}
-
-.carousel-img{
-    height: 300px;
-    border-radius: 5%;
-    margin-top: 5px;
-}
-.carousel-img img{
-    height: 250px;
-}
-
-
-.carousel-footer {
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid #B4D6CD;
-}
-
-.technologies{
-    padding: 2%;
-    justify-content: center;
-}
-.tech{
-    padding: 1px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-left: 3px;
-    margin-top: 3px;
-    background-color: #B4D6CD;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 12px;
+    border: 2px solid;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-modern::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
     border-radius: 50%;
-    font-size: small;
-    width: fit-content;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
 }
 
-.tech img{
-    height: inherit;
-    width: 12%;
-    margin-right: 3px;
+.btn-modern:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
-.project-title{
-    margin-top: 5px;
+.btn-source {
+    background: linear-gradient(135deg, #695aa6 0%, #0a4a7a 100%);
+    border-color: #07539b;
+    color: white;
 }
 
-.project-title h3{
-    background-image: linear-gradient(30deg,#B4D6CD,#07539bdd);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; 
+.btn-source:hover {
+    background: linear-gradient(135deg, #695aa6 0%, #07539b 100%);
+    border-color: #0a4a7a;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(7, 83, 155, 0.4);
 }
 
-.project-description h6{
-    margin-top: 3px;
+.btn-report {
+    background: linear-gradient(135deg, #B4D6CD 0%, #9bc5b8 100%);
+    border-color: #B4D6CD;
+    color: #2c3e50;
 }
 
-.desc-content{
-    text-align: start;
-    font-size: small;
+.btn-report:hover {
+    background: linear-gradient(135deg, #9bc5b8 0%, #B4D6CD 100%);
+    border-color: #9bc5b8;
+    color: #2c3e50;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(180, 214, 205, 0.4);
+}
+
+.btn-modern .icon {
+    height: 18px;
+    width: 18px;
+    transition: transform 0.3s ease;
+    filter: brightness(0) invert(1);
+}
+
+.btn-report .icon {
+    filter: none;
+    opacity: 0.8;
+}
+
+.btn-modern:hover .icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.btn-modern span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Icon Styling */
+.icon {
+    height: 20px;
+    width: 20px;
+    object-fit: contain;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .project-title h3 {
+        font-size: 1.25rem;
+    }
+
+    .carousel-img,
+    .project-image {
+        height: 220px;
+    }
+
+    .carousel-body {
+        padding: 1.25rem;
+    }
+
+    .tech-badge {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.7rem;
+    }
+
+    .btn-modern {
+        padding: 0.65rem 1rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .btn-container {
+        flex-direction: column;
+    }
+
+    .btn-modern {
+        width: 100%;
+    }
 }

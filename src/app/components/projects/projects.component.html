@@ -5,57 +5,60 @@
         <h4 class="section-title mb-6">Portfolio</h4>
         <!-- row -->
         <div class="row">
-            <div *ngFor="let project of projects" class="col-md-6">
-                <div class="card">
-                  <div class="project-title">
-                    <h3>{{ project.name }}</h3>
+            <div *ngFor="let project of projects" class="col-md-6 project-wrapper">
+                <div class="card modern-card">
+                  <div class="project-header">
+                    <div class="project-title">
+                      <h3>{{ project.name }}</h3>
+                    </div>
                   </div>
-                  <div id="carouselExampleIndicators{{ project.id }}" class="carousel slide" data-ride="carousel">
+                  <div id="carouselExampleIndicators{{ project.id }}" class="carousel slide project-carousel" data-ride="carousel" data-interval="10000" data-wrap="true" data-pause="hover">
                     <ol class="carousel-indicators">
                       <li *ngFor="let image of project.images; let i = index" [attr.data-slide-to]="i"
                           [class.active]="i === 0" [attr.data-target]="'#carouselExampleIndicators' + project.id"></li>
                     </ol>
                     <div class="carousel-inner carousel-img">
                       <div *ngFor="let image of project.images; let i = index" class="carousel-item" [class.active]="i === 0">
-                        <img class="d-block w-100" [src]="image.imageUrl" alt="Slide {{ i + 1 }}">
+                        <img class="d-block w-100 project-image" [src]="image.imageUrl" alt="Slide {{ i + 1 }}">
+                        <div class="image-overlay"></div>
                       </div>
                     </div>
-                    <a class="carousel-control-prev" [href]="'#carouselExampleIndicators' + project.id" role="button" data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" [href]="'#carouselExampleIndicators' + project.id" role="button" data-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
-                    </a>
                   </div>
                   <div class="carousel-body">
-                    <div class="row technologies">
-                      <span *ngFor="let tech of project.project_technologies" class="col-4 col-lg-2 tech">
-                        <img [src]="tech.technologie.image"> {{ tech.technologie.name }}
-                      </span>
+                    <div class="technologies-section">
+                      <div class="technologies">
+                        <span *ngFor="let tech of project.project_technologies" class="tech-badge">
+                          <img [src]="tech.technologie.image" class="tech-icon">
+                          <span class="tech-name">{{ tech.technologie.name }}</span>
+                        </span>
+                      </div>
                     </div>
                     <div class="project-description">
-                      <h6>{{ project.description_title }}</h6>
+                      <h6 class="description-title">{{ project.description_title }}</h6>
                       <div class="desc-content">
-                        <ul>
-                          <li *ngFor="let task of project.project_tasks">{{ task.task }}</li>
+                        <ul class="task-list">
+                          <li *ngFor="let task of project.project_tasks" class="task-item">
+                            <span class="task-bullet"></span>
+                            <span>{{ task.task }}</span>
+                          </li>
                         </ul>
                       </div>
                     </div>
                   </div>
                   <div class="carousel-footer">
                     <div class="btn-container">
-                      <a class="btn btn-outline-primary" [href]="project.source" target="_blank">
-                        <img class="icon" src="assets/imgs/github.svg">View Source
+                      <a class="btn btn-modern btn-source" [href]="project.source" target="_blank">
+                        <img class="icon" src="assets/imgs/github.svg" alt="GitHub">
+                        <span>View Source</span>
                       </a>
-                      <a *ngIf="project.report" class="btn btn-outline-primary" [href]="project.report" target="_blank">
-                        <img class="icon" src="assets/imgs/book.svg">Report
+                      <a *ngIf="project.report" class="btn btn-modern btn-report" [href]="project.report" target="_blank">
+                        <img class="icon" src="assets/imgs/book.svg" alt="Report">
+                        <span>Report</span>
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
-        </div><!-- end of row -->
-    </div><!-- end of container -->
-  </section> <!-- end of portfolio section -->
+        </div>
+    </div>
+  </section>
