@@ -18,6 +18,7 @@ import { HiremeComponent } from './components/hireme/hireme.component';
 import { TestmonialComponent } from './components/testmonial/testmonial.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TechnologiesComponent } from './components/technologies/technologies.component';
+import { RevealSectionDirective } from './directives/reveal-section.directive';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TechnologiesComponent } from './components/technologies/technologies.co
     HiremeComponent,
     TestmonialComponent,
     FooterComponent,
-    TechnologiesComponent
+    TechnologiesComponent,
+    RevealSectionDirective
   ],
   imports: [
     BrowserModule,
