@@ -1,35 +1,50 @@
-
-
 <!-- testimonial section -->
 <section class="section" id="testmonial" appRevealSection>
     <div class="container text-center">
-        <p class="section-subtitle">What Think Client About Me ?</p>
-        <h4 class="section-title mb-6">Testmonial</h4>
-  
-        <!-- row -->
-        <div class="row">
-            <div class="col-md-6">
-                <div class="testimonial-card">
-                    <div class="testimonial-card-img-holder">
-                        <img src="assets/imgs/avatar2.jpg" class="testimonial-card-img" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">                           
-                    </div>
-                    <div class="testimonial-card-body">
-                        <p class="testimonial-card-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque doloribus autem aperiam earum nostrum omnis blanditiis corporis perspiciatis adipisci nihil.</p>
-                        <h4 class="testimonial-card-title">Emily Reb</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="testimonial-card">
-                    <div class="testimonial-card-img-holder">
-                        <img src="assets/imgs/avatar3.jpg" class="testimonial-card-img" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">                        
-                    </div>
-                    <div class="testimonial-card-body">
-                        <p class="testimonial-card-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque doloribus autem aperiam earum nostrum omnis blanditiis corporis perspiciatis adipisci nihil.</p>
-                        <h4 class="testimonial-card-title">Emily Reb</h4>
-                    </div>
-                </div>
-            </div>
+        <p class="section-subtitle">What People Say About Me ?</p>
+        <h4 class="section-title mb-6">Recommendations</h4>
+    </div>
+
+    <div class="scrolling-container">
+        <div class="cards-list">
+          <div class="testimonial-card-item" *ngFor="let recommendation of recommendations">
+              <div class="testimonial-card">
+                  <div class="testimonial-card-img-holder">
+                      <img [src]="recommendation.image" class="testimonial-card-img" alt="">
+                  </div>
+                  <div class="testimonial-card-body">
+                      <button type="button" class="testimonial-card-subtitle" (click)="openRecommendation(recommendation)">
+                          {{ recommendation.comment }}
+                      </button>
+                      <h4 class="testimonial-card-title">{{ recommendation.name }}</h4>
+                      <h6 class="testimonial-card-profession" tabindex="-1">{{ recommendation.profession }}</h6>
+                  </div>
+              </div>
+          </div>
+          <div class="testimonial-card-item" *ngFor="let recommendation of recommendations" aria-hidden="true">
+              <div class="testimonial-card">
+                  <div class="testimonial-card-img-holder">
+                      <img [src]="recommendation.image" class="testimonial-card-img" alt="">
+                  </div>
+                  <div class="testimonial-card-body">
+                      <button type="button" class="testimonial-card-subtitle" tabindex="-1" (click)="openRecommendation(recommendation)">
+                          {{ recommendation.comment }}
+                      </button>
+                      <h4 class="testimonial-card-title">{{ recommendation.name }}</h4>
+                      <h6 class="testimonial-card-profession" tabindex="-1">{{ recommendation.profession }}</h6>
+                  </div>
+              </div>
+          </div>
         </div>
-    </div> <!-- end of container -->
+    </div>
+
+    <div class="testimonial-dialog" *ngIf="selected" (click)="closeRecommendation()">
+        <div class="testimonial-dialog-card" role="dialog" aria-modal="true" [attr.aria-label]="selected.name" (click)="$event.stopPropagation()">
+            <button type="button" class="testimonial-dialog-close" (click)="closeRecommendation()" aria-label="Close">×</button>
+            <img class="testimonial-dialog-img" [src]="selected.image" alt="">
+            <p class="testimonial-dialog-comment">{{ selected.comment }}</p>
+            <h4 class="testimonial-dialog-name">{{ selected.name }}</h4>
+            <h6 class="testimonial-card-profession" tabindex="-1">{{ selected.profession }}</h6>
+        </div>
+    </div>
   </section> <!-- end of testimonial section -->

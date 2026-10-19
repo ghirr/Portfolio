@@ -40,14 +40,28 @@ export class SupabaseService {
     const { data, error } = await this.supabase.storage
       .from('public/docs')
       .download(`about.json?t=${timestamp}`); // Append the timestamp as a query parameter
-  
+
     if (error) {
       console.error('Error downloading JSON file:', error);
       return null;
     }
-  
+
     const text = await data.text();
     return JSON.parse(text);
   }
-  
+
+  async getRecommendationsJsonFile() {
+    const { data, error } = await this.supabase.storage
+      .from('public/docs')
+      .download(`Recommendations.json?`); // Append the timestamp as a query parameter
+
+    if (error) {
+      console.error('Error downloading recommendations JSON file:', error);
+      return null;
+    }
+
+    const text = await data.text();
+    return JSON.parse(text);
+  }
+
 }

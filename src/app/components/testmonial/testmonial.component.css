@@ -1,0 +1,118 @@
+.scrolling-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.cards-list {
+    display: flex;
+    animation: scroll 20s linear infinite;
+    width: max-content;
+}
+
+.cards-list:hover {
+    animation-play-state: paused;
+}
+
+.testimonial-card-item {
+    flex: 0 0 auto;
+    width: 520px;
+    margin: 0 12px;
+    box-sizing: border-box;
+}
+
+.testimonial-card-subtitle {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.testimonial-card-subtitle:hover,
+.testimonial-card-subtitle:focus-visible {
+    color: #695aa6;
+}
+
+.testimonial-card-profession {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: #78768d;
+}
+
+.testimonial-dialog {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(17, 12, 34, 0.55);
+}
+
+.testimonial-dialog-card {
+    position: relative;
+    width: min(640px, 100%);
+    max-height: min(80vh, 720px);
+    overflow: auto;
+    padding: 36px 32px 28px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+    text-align: left;
+}
+
+.testimonial-dialog-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    border: 0;
+    background: transparent;
+    color: #695aa6;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.testimonial-dialog-img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 16px;
+}
+
+.testimonial-dialog-comment {
+    margin: 0;
+    color: #343a40;
+    font-size: 16px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+
+.testimonial-dialog-name {
+    margin: 20px 0 0;
+    color: #695aa6;
+    font-size: 18px;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
