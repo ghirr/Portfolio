@@ -30,7 +30,7 @@ export class SupabaseService {
   }
 
   async getAllTechnologies() {
-    const { data, error } = await this.supabase.from('technologie').select('*');
+    const { data, error } = await this.supabase.from('technologie').select('*').filter('to_share', 'eq', true);
     if (error) throw error;
     return data;
   }
