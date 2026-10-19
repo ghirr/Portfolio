@@ -11175,9 +11175,9 @@ p {
 }
 
 .service-card:hover .body img.icon {
-  margin-top: 5px;
+  margin-top: 0px;
   width: 45px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .service-card:hover .body .subtitle {
@@ -12154,7 +12154,9 @@ pre .code {
     background-size: cover;
   }
   .header-content {
-    padding-left: calc(100% / 5) !important;
+    padding-left: calc(100% / 10) !important;
+    padding-right: calc(100% / 10) !important;
+
   }
 }
 
